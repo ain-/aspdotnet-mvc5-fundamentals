@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace KatanaIntro
 {
+    using System.IO;
+    using AppFunc = Func<IDictionary<string, object>, Task>;
     class Program
     {
         static void Main(string[] args)
@@ -27,13 +29,34 @@ namespace KatanaIntro
     {
         public void Configuration(IAppBuilder app)
         {
-            app.UseWelcomePage();
-
-            //app.Run(ctx =>
-            //{
-            //    return ctx.Response.WriteAsync("Hello World!");
-            //});
+            app.UseHelloWorld();
         }
 
+    }
+
+    public static class AppBuilderExtensions
+    {
+        public static void UseHelloWorld(this IAppBuilder app)
+        {
+            app.Use<HelloWorldComponent>();
+        }
+    }
+
+    public class HelloWorldComponent
+    {
+        AppFunc _next;
+        public HelloWorldComponent(AppFunc next)
+        {
+            _next = next;
+        }
+
+        public Task Invoke(IDictionary<string, object> environment)
+        {
+            var response = environment["owin.ResponseBody"] as Stream;
+            using (var writer = new StreamWriter(response))
+            {
+                return writer.WriteAsync("Hello!!");
+            }
+        }
     }
 }
