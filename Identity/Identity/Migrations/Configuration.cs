@@ -25,11 +25,11 @@ namespace Identity.Migrations
             //        UserName = "test",
             //        PasswordHash = hasher.HashPassword("password")
             //    });
-            if (!context.Users.Any(u => u.UserName == "test"))
+            if (!context.Users.Any(u => u.Email == "test@test.com"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { UserName = "test" };
+                var user = new ApplicationUser { Email = "test@test.com" };
 
                 manager.Create(user, "password");
             }
