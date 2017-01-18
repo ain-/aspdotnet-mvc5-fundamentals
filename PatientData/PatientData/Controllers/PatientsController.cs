@@ -35,5 +35,18 @@ namespace PatientData.Controllers
 
             return Request.CreateResponse(patient);
         }
+
+        [Route("api/patients/{id}/medications")]
+        public HttpResponseMessage GetMedications(string id)
+        {
+            var patient = _patients.Find(x => x.Id == id).FirstOrDefault();
+            if (patient == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound,
+                    "Patient not found");
+            }
+
+            return Request.CreateResponse(patient.Medications);
+        }
     }
 }
