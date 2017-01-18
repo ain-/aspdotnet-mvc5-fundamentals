@@ -9,9 +9,11 @@
 
     <form id="userData">
         <input type="text" name="email" placeholder="Email" />
+        <input type="text" name="userName" placeholder="User" />
         <input type="password" name="password" placeholder="Password" />
         <input type="password" name="confirmPassword" placeholder="Password" />
         <input type="submit" id="register" value="Register" />
+        <input type="submit" id="login" value="Login" />
     </form>
 
     <button id="getPatients">Get Patients</button>
@@ -24,26 +26,52 @@
     <script>
         $(function () {
             var getPatients = function () {
-                $.get(url).always(showResponse);
+                var url = "http://localhost:54596/api/patients/";
+                $.ajax(url, {
+                    type: "GET",
+                    headers: getHeaders()
+                }).always(showResponse);
+                //$.get(url).always(showResponse);
                 return false;
             };
+
+            var getHeaders = function () {
+                if (accessToken) {
+                    return { "Authorization": "Bearer " + accessToken };
+                }
+            }
 
             var showResponse = function (object) {
                 $("#output").text(JSON.stringify(object, null, 4));
             };
-
-            var url = "http://localhost:54596/api/patients/";
-            
+ 
             var register = function () {
                 var url = "/api/account/register";
                 var data = $("#userData").serialize();
                 $.post(url, data).always(showResponse);
 
                 return false;
-            }
+            };
 
+            var saveAccessToken = function (data) {
+                accessToken = data.access_token;
+            };
+
+            var login = function () {
+                var url = "/Token";
+                var data = $("#userData").serialize();
+                data = data + "&grant_type=password";
+                $.post(url, data)
+                    .success(saveAccessToken)
+                    .always(showResponse);
+
+                return false;
+            };
+
+            $("#login").click(login);
             $("#register").click(register);
             $("#getPatients").click(getPatients);
+
         });
     </script>
 </body>
