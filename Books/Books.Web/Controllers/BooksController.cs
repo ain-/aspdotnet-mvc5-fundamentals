@@ -18,9 +18,9 @@ namespace Books.Web.Controllers
         private BooksDb db = new BooksDb();
 
         // GET: Books
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.Books.ToListAsync());
+            return View(db.Books.ToList());
         }
 
         // GET: Books/Details/5

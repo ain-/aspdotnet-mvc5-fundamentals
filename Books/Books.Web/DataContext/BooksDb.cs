@@ -1,5 +1,6 @@
 ﻿using Books.Entities;
 using System.Data.Entity;
+using System.Diagnostics;
 
 namespace Books.Web.DataContext
 {
@@ -8,7 +9,7 @@ namespace Books.Web.DataContext
         public BooksDb()
             : base("DefaultConnection")
         {
-
+            Database.Log = sql => Debug.Write(sql);
         }
 
         public DbSet<Book> Books { get; set; }
