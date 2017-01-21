@@ -195,10 +195,18 @@
     <Compile Include="DataContexts\BookMigrations\201701210813399_InitialCreate.Designer.cs">
       <DependentUpon>201701210813399_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataContexts\BookMigrations\201701211235082_DefaultSchema.cs" />
+    <Compile Include="DataContexts\BookMigrations\201701211235082_DefaultSchema.Designer.cs">
+      <DependentUpon>201701211235082_DefaultSchema.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataContexts\BookMigrations\Configuration.cs" />
     <Compile Include="DataContexts\IdentityMigrations\201701210811277_InitialCreate.cs" />
     <Compile Include="DataContexts\IdentityMigrations\201701210811277_InitialCreate.Designer.cs">
       <DependentUpon>201701210811277_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\IdentityMigrations\201701211235336_DefaultSchema.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201701211235336_DefaultSchema.Designer.cs">
+      <DependentUpon>201701211235336_DefaultSchema.cs</DependentUpon>
     </Compile>
     <Compile Include="DataContexts\IdentityMigrations\Configuration.cs" />
     <Compile Include="DataContext\BooksDb.cs" />
@@ -297,8 +305,14 @@
     <EmbeddedResource Include="DataContexts\BookMigrations\201701210813399_InitialCreate.resx">
       <DependentUpon>201701210813399_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\BookMigrations\201701211235082_DefaultSchema.resx">
+      <DependentUpon>201701211235082_DefaultSchema.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataContexts\IdentityMigrations\201701210811277_InitialCreate.resx">
       <DependentUpon>201701210811277_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\IdentityMigrations\201701211235336_DefaultSchema.resx">
+      <DependentUpon>201701211235336_DefaultSchema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
