@@ -170,6 +170,16 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DataContexts\BookMigrations\201701210813399_InitialCreate.cs" />
+    <Compile Include="DataContexts\BookMigrations\201701210813399_InitialCreate.Designer.cs">
+      <DependentUpon>201701210813399_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\BookMigrations\Configuration.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201701210811277_InitialCreate.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201701210811277_InitialCreate.Designer.cs">
+      <DependentUpon>201701210811277_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\IdentityMigrations\Configuration.cs" />
     <Compile Include="DataContext\BooksDb.cs" />
     <Compile Include="DataContext\IdentityDb.cs" />
     <Compile Include="Global.asax.cs">
@@ -253,6 +263,14 @@
       <Project>{a52aeb8c-fc93-4e11-849c-21615a9d8569}</Project>
       <Name>Books.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataContexts\BookMigrations\201701210813399_InitialCreate.resx">
+      <DependentUpon>201701210813399_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\IdentityMigrations\201701210811277_InitialCreate.resx">
+      <DependentUpon>201701210811277_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
